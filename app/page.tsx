@@ -1,29 +1,43 @@
 import CountdownTimer from "@/components/CountdownTimer";
 import RegistrationForm from "@/components/RegistrationForm";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
+import { Users } from "lucide-react";
 export default function Home() {
   return (
     <div className="min-h-screen bg-linear-to-br from-background via-background to-muted">
       {/* Header */}
       <header className="bg-primary shadow-tournament">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-center gap-4">
-            <Image
-              src={"/images/logo.png"}
-              alt="Sheger School Cup"
-              width={100}
-              height={100}
-              className="h-16 md:h-20 object-contain"
-            />
-            <div className="text-center">
-              <h1 className="text-2xl md:text-3xl font-bold text-primary-foreground">
-                SHEGER SCHOOL CUP
-              </h1>
-              <p className="text-sm md:text-base text-primary-foreground/80 font-medium">
-                Quarter-Finals Registration
-              </p>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center justify-center gap-4">
+              <Image
+                src={"/images/logo.png"}
+                alt="Sheger School Cup"
+                width={100}
+                height={100}
+                className="h-16 md:h-20 object-contain"
+              />
+              <div className="text-center">
+                <h1 className="text-2xl md:text-3xl font-bold text-primary-foreground">
+                  SHEGER SCHOOL CUP
+                </h1>
+                <p className="text-sm md:text-base text-primary-foreground/80 font-medium">
+                  Quarter-Finals Registration
+                </p>
+              </div>
             </div>
+            <Link href="/registrations">
+              <Button
+                variant="outline"
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+              >
+                <Users className="mr-2 h-4 w-4" />
+                View Registrations
+              </Button>
+            </Link>
           </div>
         </div>
       </header>
