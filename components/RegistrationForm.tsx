@@ -52,7 +52,7 @@ const formSchema = z.object({
     .min(2, "School name must be at least 2 characters")
     .max(100, "School name is too long"),
   numberOfPlayers: z.string().min(1, "Please select number of players"),
-  players: z.array(playerSchema).min(1).max(6),
+  players: z.array(playerSchema).min(10).max(16),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -78,8 +78,8 @@ const RegistrationForm = () => {
   const numberOfPlayers = form.watch("numberOfPlayers");
   const playerCount = numberOfPlayers ? parseInt(numberOfPlayers) : 0;
 
-  // Generate player count options (1-6)
-  const playerOptions = Array.from({ length: 6 }, (_, i) => i + 1);
+  // Generate player count options (10-16)
+  const playerOptions = Array.from({ length: 7 }, (_, i) => i + 10);
 
   // Update players array when numberOfPlayers changes
   useEffect(() => {
@@ -193,7 +193,7 @@ const RegistrationForm = () => {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel className="text-sm font-semibold">
-                Number of Players (1-6){" "}
+                Number of Players (10-16){" "}
                 <span className="text-destructive">*</span>
               </FormLabel>
               <Select onValueChange={field.onChange} value={field.value}>
