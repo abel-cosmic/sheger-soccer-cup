@@ -1,65 +1,114 @@
+import CountdownTimer from "@/components/CountdownTimer";
+import RegistrationForm from "@/components/RegistrationForm";
+import { Card } from "@/components/ui/card";
 import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="min-h-screen bg-linear-to-br from-background via-background to-muted">
+      {/* Header */}
+      <header className="bg-primary shadow-tournament">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-center gap-4">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src={"/images/logo.png"}
+              alt="Sheger School Cup"
+              width={100}
+              height={100}
+              className="h-16 md:h-20 object-contain"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="text-center">
+              <h1 className="text-2xl md:text-3xl font-bold text-primary-foreground">
+                SHEGER SCHOOL CUP
+              </h1>
+              <p className="text-sm md:text-base text-primary-foreground/80 font-medium">
+                Quarter-Finals Registration
+              </p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="container mx-auto px-4 py-8 md:py-12">
+        {/* Countdown Timer */}
+        <div className="mb-12">
+          <CountdownTimer />
+        </div>
+
+        {/* Main Grid Layout */}
+        <div className="grid lg:grid-cols-2 gap-8 items-start">
+          {/* Left Side - Tournament Bracket */}
+          <div className="order-2 lg:order-1">
+            <Card className="overflow-hidden border-2 border-border shadow-tournament bg-card">
+              <div className="bg-primary p-4 border-b-4 border-secondary">
+                <h2 className="text-xl font-bold text-primary-foreground text-center">
+                  QUARTER-FINALS BRACKET
+                </h2>
+              </div>
+              <div className="p-4 md:p-6">
+                <Image
+                  src={"/images/bracket.png"}
+                  width={1000}
+                  height={1000}
+                  alt="Quarter-Finals Bracket"
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+            </Card>
+
+            {/* Tournament Info */}
+            <Card className="mt-6 p-6 border-2 border-border bg-card">
+              <h3 className="text-lg font-bold text-foreground mb-4">
+                Tournament Information
+              </h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-accent font-bold">•</span>
+                  <span>Teams must consist of 10-16 registered players</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent font-bold">•</span>
+                  <span>Valid school ID required for verification</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent font-bold">•</span>
+                  <span>Registration closes Friday at 12:00 PM</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent font-bold">•</span>
+                  <span>Quarter-final matches begin the following week</span>
+                </li>
+              </ul>
+            </Card>
+          </div>
+
+          {/* Right Side - Registration Form */}
+          <div className="order-1 lg:order-2">
+            <Card className="border-2 border-border shadow-tournament bg-card">
+              <div className="bg-linear-to-r from-primary to-primary/90 p-6 border-b-4 border-secondary">
+                <h2 className="text-2xl font-bold text-primary-foreground text-center mb-2">
+                  Team Registration
+                </h2>
+                <p className="text-primary-foreground/90 text-center text-sm">
+                  Complete the form below to register your team
+                </p>
+              </div>
+              <div className="p-6 md:p-8">
+                <RegistrationForm />
+              </div>
+            </Card>
+          </div>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-primary mt-16 py-6 border-t-4 border-secondary">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-primary-foreground/80 text-sm">
+            © 2024 Sheger School Cup. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
